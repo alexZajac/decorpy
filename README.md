@@ -5,13 +5,15 @@ A collection of python decorators including time measurement, type checking and 
 ## Installation
 
 Install the package directly using `Pip` with [Pypi]() 
-> `pip install pydecorator`
+`pip install pydecorator`
 
 Or using `git`
 
-`git clone https://github.com/alexZajac/decorpy.git
-cd decorpy
-python setup.py install`
+`git clone https://github.com/alexZajac/decorpy.git`
+
+`cd decorpy`
+
+`python setup.py install`
 
 ## Examples
 
