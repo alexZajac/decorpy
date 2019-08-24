@@ -1,8 +1,13 @@
 dist: xenial
 language: python
+branches:
+  only:
+    - master
 python: 3.6.4
 install:
   - pip install -r requirements_dev.txt
   - pip install -e .
 script:
   - pytest
+after_success:
+  - coveralls
