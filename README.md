@@ -4,7 +4,8 @@ A collection of python decorators including time measurement, type checking and 
 
 ## Installation
 
-Install the package directly using `Pip` with [Pypi]() 
+Install the package directly using `Pip` with [Pypi](https://pypi.org/project/decorpy/) 
+
 `pip install pydecorator`
 
 Or using `git`
