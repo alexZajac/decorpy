@@ -25,10 +25,10 @@ def debug(func):
         signature = ", ".join(args_repr + kwargs_repr)
 
         print(f"Now calling {func.__name__}({signature})")
-        value = func(*args, **kwargs)
-        print(f"Call with {func.__name__}({signature}) -> returned {value!r}")
+        result = func(*args, **kwargs)
+        print(f"Call with {func.__name__}({signature}) -> returned {result!r}")
 
-        return value
+        return result
     return wrapper_debug
 
 
@@ -49,12 +49,16 @@ def check_types(input=None, output=None):
                 raise Exception(
                     f"The function expected {len(input)} parameters.")
 
-            # getting result into tuple
             result = func(*args, **kwargs)
-            if not isinstance(result, tuple):
-                result = (result, )
 
-            if len(result) == len(output):
+            # if result is not a tuple
+            if not isinstance(result, tuple):
+                if not isinstance(result, output[0]):
+                    raise Exception(
+                        f"The type of {result} and {output[0]} are different : {type(result)} and {type(output[0])}")
+
+            # we compare length
+            elif len(result) == len(output):
                 for i, v in enumerate(result):
                     if not isinstance(v, output[i]):
                         raise Exception(
@@ -66,3 +70,11 @@ def check_types(input=None, output=None):
             return result
         return check_wrapper
     return check_decorator
+
+
+@check_types(input=(str, int), output=(str, ))
+def multiple_strings(base_str, times):
+    return base_str * times
+
+
+print(multiple_strings("Hello", 5))
