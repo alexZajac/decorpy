@@ -8,6 +8,6 @@ install:
   - pip install -r requirements_dev.txt
   - pip install -e .
 script:
-  - pytest
+  - pytest --cov=decorpy
 after_success:
   - coveralls
