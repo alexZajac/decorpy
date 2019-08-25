@@ -5,7 +5,7 @@ with open("README.md", "r") as readme_content:
 
 setup(
     name="decorpy",
-    version="0.1",
+    version="0.2",
     author="Alexandre Zajac",
     author_email="work@alexandrezajac.com",
     description="A package exposing a collection of ready-to-use python decorators.",
@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/alexZajac/decorpy",
     packages=find_packages(),
-    download_url="https://github.com/alexZajac/decorpy/archive/Main.tar.gz",
+    download_url="https://github.com/alexZajac/decorpy/archive/v_02.tar.gz",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
