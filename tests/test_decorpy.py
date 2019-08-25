@@ -1,39 +1,6 @@
 """Tests for `decorpy` package."""
 import pytest
-import math
-from timeit import default_timer
 from decorpy import timer, debug, check_types
-
-
-def test_timer(capsys):
-    """Test the time measurement of the timer decorator"""
-    def long_func(n):
-        sum = 0
-        for i in range(n):
-            sum += i
-        return sum
-    # Naive time
-    start_test = default_timer()
-    res = long_func(10)
-    end_test = default_timer()
-    total_time_magnitude = int(math.log10(end_test - start_test))
-    # Decorator time
-    long_func = timer(long_func)
-    res = long_func(10)
-    captured = capsys.readouterr()
-    decorator_magnitude = int(math.log10(
-        float(captured.out.split(" seconds")[0].split("is ")[1])))
-    assert decorator_magnitude == total_time_magnitude
-
-
-def test_debug(capsys):
-    """Tests if return value and signature of function is correct"""
-    @debug
-    def debug_func(n, k=3):
-        return n ** k
-    test = debug_func(3, k=2)
-    captured = capsys.readouterr()
-    assert "Now calling debug_func(3, k=2)" in captured.out and "Call with debug_func(3, k=2) -> returned 9" in captured.out
 
 
 def test_types_count_input():
