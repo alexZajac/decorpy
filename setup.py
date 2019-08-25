@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/alexZajac/decorpy",
     packages=find_packages(),
-    download_url="https://github.com/alexZajac/decorpy/archive/v_01.tar.gz",
+    download_url="https://github.com/alexZajac/decorpy/archive/Main.tar.gz",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
