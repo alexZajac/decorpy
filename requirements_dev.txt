@@ -3,5 +3,5 @@ wheel==0.33.6
 twine==1.13.0
 coveralls==1.8.2
 pytest-cov==2.7.1
-pytest==5.1.1
+pytest==5.2.0
 black==19.3b0
