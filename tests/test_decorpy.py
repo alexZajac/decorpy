@@ -60,7 +60,7 @@ def test_types_count_output():
     assert str(e.value) == "The function expected 2 return values."
 
 
-def test_types_check():
+def test_wrong_input_types_check():
     """Test that exception is raised for invalid types"""
 
     @check_types(input=(int, str), output=(str,))
@@ -73,3 +73,55 @@ def test_types_check():
         str(e.value)
         == "The type of 5 and input[0] are different : <class 'str'> and <class 'int'>"
     )
+
+
+def test_wrong_output_types_check():
+    """Test that exception is raised for invalid types"""
+
+    @check_types(input=(int, int), output=(int, ))
+    def test(n1, n2):
+        return n1 * n2 * 1.0
+
+    with pytest.raises(Exception) as e:
+        assert test(5, 2)
+    assert (
+        str(e.value)
+        == "The type of 10.0 and output[0] are different : <class 'float'> and <class 'int'>"
+    )
+
+def test_wrong_output_tuple_types_check():
+    """Test that exception is raised for invalid types"""
+
+    @check_types(input=(int, int), output=(int, int))
+    def test(n1, n2):
+        return (n1, n2 * 1.0)
+
+    with pytest.raises(Exception) as e:
+        assert test(5, 2)
+    assert (
+        str(e.value)
+        == "The type of 2.0 and output[1] are different : <class 'float'> and <class 'int'>"
+    )
+
+def test_wrong_output_tuple_length_types_check():
+    """Test that exception is raised for invalid types"""
+
+    @check_types(input=(int, int), output=(int, int))
+    def test(n1, n2):
+        return (n1 + n2 * 1.0, )
+
+    with pytest.raises(Exception) as e:
+        assert test(5, 2)
+    assert (
+        str(e.value)
+        == "The function expected 2 return values."
+    )
+
+def test_correct_output_types_check():
+    """Test that exception is raised for invalid types"""
+
+    @check_types(input=(int, int), output=(float, ))
+    def test(n1, n2):
+        return n1 * n2 * 1.0
+
+    assert test(5, 2) == 10.0

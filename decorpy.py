@@ -63,7 +63,7 @@ def check_types(input=None, output=None):
                 if len(output) == 1:
                     if not isinstance(result, output[0]):
                         raise Exception(
-                            f"The type of {result} and {output[0]} are different : {type(result)} and {type(output[0])}"
+                            f"The type of {result} and output[0] are different : {type(result)} and {output[0]}"
                         )
                 else:
                     raise Exception(
@@ -74,7 +74,7 @@ def check_types(input=None, output=None):
                 for i, v in enumerate(result):
                     if not isinstance(v, output[i]):
                         raise Exception(
-                            f"The type of {v} and {output[i]} are different : {type(v)} and {type(output[i])}"
+                            f"The type of {v} and output[{i}] are different : {type(v)} and {output[i]}"
                         )
             else:
                 raise Exception(
