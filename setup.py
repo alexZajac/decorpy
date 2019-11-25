@@ -5,7 +5,7 @@ with open("README.md", "r") as readme_content:
 
 setup(
     name="decorpy",
-    version="0.2",
+    version="0.3",
     author="Alexandre Zajac",
     author_email="work@alexandrezajac.com",
     description="A package exposing a collection of ready-to-use python decorators.",
