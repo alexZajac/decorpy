@@ -11,10 +11,8 @@ def timer(func):
         start = default_timer()
         result = func(*args, **kwargs)
         end = default_timer()
-        print(
-            f"The time taken for the function {func.__name__!r} with args {saved_args} is {(end - start)} seconds."
-        )
-	    return result
+        print(f"The time taken for the function {func.__name__!r} with args {saved_args} is {(end - start)} seconds.")
+        return result
 
     return wrapper_time
 
